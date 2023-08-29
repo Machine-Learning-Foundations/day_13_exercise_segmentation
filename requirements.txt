@@ -1,0 +1,11 @@
+nox
+numpy
+matplotlib
+jax
+jaxlib
+SimpleITK
+scikit-image
+tcia_utils
+clu
+tensorflow-cpu
+tqdm
