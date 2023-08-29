@@ -21,23 +21,8 @@ def compute_iou(preds: jnp.ndarray, target: jnp.ndarray) -> jnp.ndarray:
     """
     assert preds.shape == target.shape
 
-    b, h, w, s = target.shape
-    batch_preds = jnp.reshape(preds, (b * s, h, w, 1))
-    batch_target = jnp.reshape(target, (b * s, h, w, 1))
-    batch_iou = []
-    for idx in range(b * s):
-        preds = batch_preds[idx]
-        target = batch_target[idx]
-        per_class_iou = []
-        for cls in range(0, 5):
-            if jnp.any(preds == cls) and jnp.any(target == cls):
-                tp = jnp.sum((preds == cls) & (target == cls))
-                fp = jnp.sum((preds != cls) & (target == cls))
-                fn = jnp.sum((preds == cls) & (target != cls))
-                iou = tp / (tp + fp + fn + 1e-8)
-                per_class_iou.append(iou)
-        batch_iou.append(jnp.mean(jnp.array(per_class_iou)))
-    return jnp.mean(jnp.array(batch_iou))
+    # TODO: implement iou.
+    return jnp.array(0.0)
 
 
 if __name__ == "__main__":
