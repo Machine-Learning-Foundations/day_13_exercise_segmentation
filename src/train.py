@@ -104,7 +104,18 @@ class UNet3D(nn.Module):
         x1 = jnp.expand_dims(x, -1).transpose([0, 3, 1, 2, 4])
         init_feat = 16
         out_neurons = 5
-        # TODO: Use nn.Conv, nn.relu, pad_odd, up_block and jnp.concatenate
+
+        def upsample_block(x_in):
+            if self.transpose_conv:
+                x_out = nn.ConvTranspose(
+                    features=init_feat * 8, kernel_size=(3, 3, 3), strides=(1, 2, 2)
+                )(x_in)
+            else:
+                b, d, h, w, c = x_in.shape
+                x_out = jax.image.resize(x_in, (b, d, h * 2, w * 2, c), "nearest")
+            return x_out
+
+        # TODO: Use nn.Conv, nn.relu, pad_odd, upsample_block and jnp.concatenate
         # To implement a three dimensional U-Net as discussed in the lecture.
         return jnp.zeros_like(x1)
 
