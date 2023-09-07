@@ -9,3 +9,4 @@ tcia_utils
 clu
 tensorflow-cpu
 tqdm
+tensorflow
