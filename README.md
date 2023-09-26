@@ -95,7 +95,7 @@ After training you can test your model by changing the `checkpoint_name` variabl
 ![slice](./fig/prostatext2_net.png)
 ![slice](./fig/prostatext2_true.png)
 
-### Task 6 (Optional): Implement mean Intersection-over-Union (mIoU)
+### Task 6: Implement mean Intersection-over-Union (mIoU)
 
 Open the `meanIoU.py` in `src` and implement the `compute_iou` function as discussed below.
 mIoU is the most common metric used for evaluating semantic segmentation tasks. It can be computed using the values from a confusion matrix as given below
