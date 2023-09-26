@@ -16,9 +16,9 @@ python ./data/download.py
 in your terminal. The script will download and prepare the medical scans and domain-expert
 annotations for you.
 
-Data loading and resampling work already. 
+Data loading and resampling work already. The first task is optional. If you want to skip it, download the `compute_roi.py` from eCampus and replace the contents with the existing function `compute_roi()` in the repository.
 
-1. #### Find the bounding box roi as described below by finishing the `compute_roi` function.
+1. #### Find the bounding box roi as described below by finishing the `compute_roi` function. (Optional)
 Once you have obtained the train and test data, you must create a preprocessing pipeline.
 Proceed to `src/util.py` and compute the so called region of interest.
 Meyer et al. define this region as:
